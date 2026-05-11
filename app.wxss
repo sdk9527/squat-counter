@@ -1,0 +1,23 @@
+page {
+  --bg-primary: #121214;
+  --bg-card: #1e293b;
+  --bg-dark: #1a1a2e;
+  --accent: #FF6B35;
+  --accent-light: #FF8C42;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-color: #2a2a3e;
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 16px;
+}

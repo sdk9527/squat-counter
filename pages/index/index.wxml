@@ -1,0 +1,102 @@
+<view class="container">
+  <!-- 速度档位 + 齿轮 -->
+  <view class="top-bar">
+    <view class="speed-badge" bindtap="openSpeedPicker">
+      <text>{{speedLabel}}</text>
+      <text class="gear-icon">⚙️</text>
+    </view>
+  </view>
+
+  <!-- Progress Ring -->
+  <view class="ring-container">
+    <canvas type="2d" id="ringCanvas" class="ring-canvas"></canvas>
+    <view class="ring-inner">
+      <text class="count-number">{{running ? sessionCount : todayCount}}</text>
+      <text class="count-label">{{running ? '进行中' : '今日深蹲'}}</text>
+      <text class="count-target">目标 {{dailyGoal}} 次</text>
+    </view>
+  </view>
+
+  <!-- Session Info -->
+  <view class="info-row" wx:if="{{running || lastSession}}">
+    <view class="info-card">
+      <text class="info-label">⏱ 时长</text>
+      <text class="info-value">{{elapsed}}</text>
+    </view>
+    <view class="info-card">
+      <text class="info-label">🔥 卡路里</text>
+      <text class="info-value">{{calories}} kcal</text>
+    </view>
+  </view>
+
+  <!-- Waveform -->
+  <view class="waveform-card" wx:if="{{running}}">
+    <text class="waveform-title">实时加速度</text>
+    <view class="waveform">
+      <view class="wave-bar {{item.active ? 'active' : ''}}"
+            wx:for="{{waveBars}}" wx:key="index"
+            style="height: {{item.h}}%;"></view>
+    </view>
+    <view class="wave-labels">
+      <text class="wave-label on">触发区间</text>
+      <text class="wave-label">静止区间</text>
+      <text class="wave-label off">触发区间</text>
+    </view>
+  </view>
+
+  <!-- Action Buttons -->
+  <view class="actions">
+    <view class="btn-start" bindtap="toggleRunning">
+      <text>{{running ? '结  束' : '开始计数'}}</text>
+    </view>
+
+    <view class="manual-btns" wx:if="{{running}}">
+      <view class="btn-manual minus" bindtap="manualMinus">
+        <text class="manual-icon">−</text>
+      </view>
+      <view class="btn-manual plus" bindtap="manualPlus">
+        <text class="manual-icon">+</text>
+      </view>
+    </view>
+
+    <view class="sensor-status {{sensorReady ? 'ready' : ''}}">
+      <text>{{sensorStatusText}}</text>
+    </view>
+  </view>
+
+  <!-- Calibration hint -->
+  <view class="calibration-hint" wx:if="{{!sensorReady && !running}}">
+    <text>💡 将手机握在手中，点击「开始计数」后开始深蹲</text>
+    <text class="hint-sub">传感器会自动检测每次下蹲→起身的动作</text>
+  </view>
+
+  <!-- 速度档位选择 -->
+  <view class="speed-mask" wx:if="{{showSpeedPicker}}" bindtap="closeSpeedPicker"></view>
+  <view class="speed-picker {{showSpeedPicker ? 'show' : ''}}">
+    <view class="speed-picker-title">选择下蹲速度</view>
+    <view class="speed-option {{speedLevel === 1 ? 'selected' : ''}}"
+          bindtap="selectSpeed" data-level="1">
+      <view class="speed-dot"></view>
+      <view class="speed-info">
+        <text class="speed-name">慢速 / 灵敏</text>
+        <text class="speed-desc">适合较慢的下蹲动作，容易触发计数</text>
+      </view>
+    </view>
+    <view class="speed-option {{speedLevel === 2 ? 'selected' : ''}}"
+          bindtap="selectSpeed" data-level="2">
+      <view class="speed-dot"></view>
+      <view class="speed-info">
+        <text class="speed-name">中速 / 标准</text>
+        <text class="speed-desc">常规速度，适合大多数用户</text>
+      </view>
+    </view>
+    <view class="speed-option {{speedLevel === 3 ? 'selected' : ''}}"
+          bindtap="selectSpeed" data-level="3">
+      <view class="speed-dot"></view>
+      <view class="speed-info">
+        <text class="speed-name">快速 / 费力</text>
+        <text class="speed-desc">需要较快的下蹲才能触发，适合高强度训练</text>
+      </view>
+    </view>
+  </view>
+</view>

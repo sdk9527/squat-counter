@@ -1,0 +1,14 @@
+# 微信小程序
+node_modules/
+miniprogram_npm/
+.eslintrc.js
+*.log
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 项目私密配置
+project.private.config.json

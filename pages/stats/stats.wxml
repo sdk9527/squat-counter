@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- Summary Cards -->
+  <view class="summary-row">
+    <view class="summary-card accent">
+      <text class="summary-num">{{weekTotal}}</text>
+      <text class="summary-label">本周</text>
+    </view>
+    <view class="summary-card light">
+      <text class="summary-num">{{monthTotal}}</text>
+      <text class="summary-label">本月</text>
+    </view>
+    <view class="summary-card">
+      <text class="summary-num">{{totalCount}}</text>
+      <text class="summary-label">总计</text>
+    </view>
+  </view>
+
+  <!-- Streak -->
+  <view class="streak-card">
+    <text class="streak-icon">🔥</text>
+    <view class="streak-info">
+      <text class="streak-title">连续打卡</text>
+      <text class="streak-desc">已坚持 {{streak}} 天 · 继续加油！</text>
+    </view>
+    <view class="streak-badge">
+      <text class="streak-num">{{streak}}</text>
+      <text class="streak-unit">天</text>
+    </view>
+  </view>
+
+  <!-- Weekly Chart -->
+  <view class="chart-section">
+    <text class="section-title">📈 近7天趋势</text>
+    <view class="chart">
+      <view class="bar-col" wx:for="{{chartData}}" wx:key="date">
+        <text class="bar-value" wx:if="{{item.count > 0}}">{{item.count}}</text>
+        <view class="bar {{item.count === maxCount ? 'peak' : ''}}"
+              style="height: {{item.count > 0 ? (item.count / maxCount * 100) : 0}}%;">
+        </view>
+        <text class="bar-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Best Records -->
+  <text class="section-title">🏆 最佳记录</text>
+  <view class="best-row">
+    <view class="best-card">
+      <text class="best-num accent">{{best.maxCount}}</text>
+      <text class="best-label">单次最多次数</text>
+    </view>
+    <view class="best-card">
+      <text class="best-num light">{{bestDurationText}}</text>
+      <text class="best-label">最长训练时长</text>
+    </view>
+  </view>
+
+  <!-- Monthly Goal -->
+  <view class="goal-card">
+    <text class="goal-title">每月目标完成度</text>
+    <text class="goal-desc">已完成 {{monthTotal}} / {{monthGoal}} 次</text>
+    <view class="goal-bar-bg">
+      <view class="goal-bar-fill" style="width: {{monthPct}}%;"></view>
+    </view>
+    <text class="goal-pct">{{monthPct}}%</text>
+  </view>
+</view>

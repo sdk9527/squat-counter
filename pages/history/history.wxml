@@ -1,0 +1,25 @@
+<view class="container">
+  <block wx:for="{{groups}}" wx:key="label">
+    <view class="date-header">{{item.label}}</view>
+
+    <view class="record-card" wx:for="{{item.records}}" wx:for-item="r" wx:key="id">
+      <view class="record-left">
+        <text class="record-name">{{r.time}} 深蹲训练</text>
+        <text class="record-meta">{{r.durationText}} · {{r.calories}} kcal</text>
+      </view>
+      <view class="record-right">
+        <text class="record-count">{{r.count}}</text>
+        <text class="record-unit">次</text>
+      </view>
+      <view class="record-delete" bindtap="onDelete" data-id="{{r.id}}">
+        <text>×</text>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty" wx:if="{{groups.length === 0}}">
+    <text class="empty-icon">🏋️</text>
+    <text class="empty-text">还没有记录</text>
+    <text class="empty-sub">开始你的第一次深蹲训练吧</text>
+  </view>
+</view>

@@ -1,0 +1,78 @@
+.container {
+  padding: 16px 20px;
+  min-height: 100vh;
+}
+
+.date-header {
+  font-size: 12px;
+  color: #64748b;
+  margin: 16px 0 10px;
+  font-weight: 500;
+}
+
+.record-card {
+  display: flex;
+  align-items: center;
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.record-left {
+  flex: 1;
+}
+.record-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+.record-meta {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.record-right {
+  text-align: center;
+  margin-left: 12px;
+}
+.record-count {
+  display: block;
+  font-size: 24px;
+  font-weight: 900;
+  color: #FF6B35;
+  line-height: 1;
+}
+.record-unit {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.record-delete {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.record-delete text {
+  font-size: 18px;
+  color: #64748b;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 160px;
+}
+.empty-icon { font-size: 48px; margin-bottom: 16px; }
+.empty-text { font-size: 16px; color: #94a3b8; margin-bottom: 6px; }
+.empty-sub { font-size: 12px; color: #64748b; }

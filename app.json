@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/history/history",
+    "pages/stats/stats"
+  ],
+  "window": {
+    "navigationBarTitleText": "深蹲计数器",
+    "navigationBarBackgroundColor": "#121214",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#121214"
+  },
+  "tabBar": {
+    "color": "#64748b",
+    "selectedColor": "#FF6B35",
+    "backgroundColor": "#1a1a2e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "计数"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "记录"
+      },
+      {
+        "pagePath": "pages/stats/stats",
+        "text": "统计"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
